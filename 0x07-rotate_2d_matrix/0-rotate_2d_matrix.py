@@ -1,21 +1,59 @@
 #!/usr/bin/python3
-''' rotates a 2D matrix '''
+"""_summary_
+"""
+
+
+def transpose_matrix(matrix, n):
+    """_summary_
+
+    Args:
+                    matrix (_type_): _description_
+    """
+    for i in range(n):
+        for j in range(i, n):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
+
+def reverse_matrix(matrix):
+    """_summary_
+
+    Args:
+                    matrix (_type_): _description_
+    """
+    for row in matrix:
+        row.reverse()
 
 
 def rotate_2d_matrix(matrix):
-    '''
-        rotates 2d matrix 90 degrees clockwise
-        rotation happens in place
-        args:
-            matrix
-    '''
-    rows = len(matrix)
-    columns = rows - 1
+    """_summary_
 
-    for i in range(0, int(rows / 2)):
-        for j in range(i, columns - i):
-            temp = matrix[i][j]
-            matrix[i][j] = matrix[columns - j][i]
-            matrix[columns - j][i] = matrix[columns - i][columns - j]
-            matrix[columns - i][columns - j] = matrix[j][columns - i]
-            matrix[j][columns - i] = temp
+    Args:
+                    matrix (_type_): _description_
+    """
+    n = len(matrix)
+    # print(n)
+
+    """sample matrix
+    1 2 3
+    4 5 6
+    7 8 9
+    """
+
+    # transpose matrix
+    """
+    1 4 7
+    2 5 8
+    3 6 9
+    """
+
+    transpose_matrix(matrix, n)
+
+    # reverse matrix
+    """
+    7 4 1
+    8 5 2
+    9 6 3
+    """
+    reverse_matrix(matrix)
+
+    return matrix
